@@ -1,0 +1,26 @@
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+use App\Models\Course;
+use App\Models\Teacher;
+use App\Models\Semester;
+
+class TeacherCourse extends Model
+{
+    use HasFactory;
+    public $timestamps = false;
+    public $table = "teacher_courses";
+
+    public function course(){
+        return $this->belongsTo(Course::class,'c_id');
+    }
+    public function teacher(){
+        return $this->belongsTo(Teacher::class,'t_id');
+    }
+    public function semester(){
+        return $this->belongsTo(Semester::class,'sm_id');
+    }
+}
