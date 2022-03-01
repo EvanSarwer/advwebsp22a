@@ -94,8 +94,19 @@ class pagescontroller extends Controller
         $student = Student::where('username',$req->uname)
         ->where('password',md5($req->password))
         ->first();
-        return $student;
- 
-         
+        $msg="";
+        if($student){
+            $req->session()->flash('msg','Student exists');
+            $req->session()->put('user',$student->username);
+        }
+        else{
+            $req->session()->flash('msg','Student does not exist');
+        }
+        return redirect()->route('home');
+      
+     }
+     public function logout(){
+         session()->flush();
+         return redirect()->route('login');
      }
 }

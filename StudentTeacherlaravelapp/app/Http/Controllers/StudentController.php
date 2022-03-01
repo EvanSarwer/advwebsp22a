@@ -8,6 +8,9 @@ use App\Models\Student;
 
 class StudentController extends Controller
 {
+    public function __construct(){
+        $this->middleware('auth.user');
+    }
     //
     public function create(){
         return view('student.create');
@@ -39,6 +42,10 @@ class StudentController extends Controller
         ->with('sum',$sum);
     }
     public function list(){
+
+       /* if(!session()->get('user')){
+            return redirect()->route('login');
+        }
 
         /*$students=[];
         for($i=1;$i<=10;$i++){

@@ -17,8 +17,8 @@ use App\Http\Controllers\TeacherController;
 */
 
 //Route::get('/login','pagescontroller@index');
-Route::get('/',[pagescontroller::class,'index']);
-Route::get('/login',[pagescontroller::class,'login']);
+Route::get('/',[pagescontroller::class,'index'])->name('home');
+Route::get('/login',[pagescontroller::class,'login'])->name('login');
 Route::get('/registration',[pagescontroller::class,'register'])->name('register');
 
 Route::get('/student/create',[StudentController::class,'create']);
@@ -28,7 +28,7 @@ Route::get('/student/list',[StudentController::class,'list'])->name('list');
 
 Route::post('/login',[pagescontroller::class,'loginsubmit'])->name('login.submit');
 Route::post('/registration',[pagescontroller::class,'registersubmit'])->name('register.submit');
-Route::get('/department/list',[DepartmentController::class,'list'])->name('department.list');
+Route::get('/department/list',[DepartmentController::class,'list'])->middleware('auth.user')->name('department.list');
 Route::get('/department/details/{id}',[DepartmentController::class,'details'])->name('department.details');
 
 Route::get('/teacher/create',[TeacherController::class,'create']);
@@ -36,3 +36,4 @@ Route::get('/teacher/edit',[TeacherController::class,'edit']);
 Route::get('teacher/list',[TeacherController::class,'list'])->name('teacher.list');
 Route::get('teacher/get/{id}',[TeacherController::class,'get'])->name('teacher.details');
 
+Route::get('/logout',[pagescontroller::class,'logout'])->name('logout');
