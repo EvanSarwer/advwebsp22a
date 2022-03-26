@@ -1,0 +1,35 @@
+<script>
+
+var x = function(x,y){
+	return x *y;
+}
+
+var myfunc =x;
+
+console.log(x);
+console.log(x(10,12));
+
+console.log(myfunc);
+console.log(myfunc(12,12));
+
+const add = (a,b)=>{
+	c=a+b;
+	return c;
+}
+
+const sub = (a,b)=>{
+	c=a-b;
+	return c;
+}
+
+console.log(add);
+
+var addition = add;
+console.log(addition);
+
+console.log(add(5,10));
+console.log(sub(5,10));
+
+
+
+</script>
